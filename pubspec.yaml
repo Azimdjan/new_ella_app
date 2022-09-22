@@ -1,0 +1,55 @@
+name: ella
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.5
+  get_it: ^7.2.0
+  dartz: ^0.10.1
+  flutter_bloc: ^8.1.1
+  bloc: ^8.1.0
+  formz: ^0.4.1
+  hive: ^2.2.3
+  flutter_native_splash: ^2.2.9
+  equatable: ^2.0.5
+  dio: ^4.0.6
+  connectivity: ^3.0.6
+  internet_connection_checker_plus: ^1.0.1
+  go_router: ^5.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+  build_runner: ^2.2.1
+  bloc_test: ^9.1.0
+  hive_flutter: ^1.1.0
+  mockito: ^5.3.1
+
+flutter:
+  uses-material-design: true
+flutter_native_splash:
+  path: ..
+
+  assets:
+    - assets/
+    - assets/png/
+    - assets/svg/
+    - assets/fonts/
+  fonts:
+    - family: SF-Pro-Display
+      fonts:
+        - asset: assets/fonts/SF_Pro_Display_Bold.otf
+          weight: 700
+        - asset: assets/fonts/SF_Pro_Display_Medium.otf
+          weight: 500
+        - asset: assets/fonts/SF_Pro_Display_Regular.otf
+          weight: 400
