@@ -11,6 +11,9 @@ final shellRootNavigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
   navigatorKey: rootNavigatorKey,
   initialLocation: Routes.login,
+  // redirect: (context, state) async {
+  //   return '/';
+  // },
   routes: [
     GoRoute(
       path: Routes.login,

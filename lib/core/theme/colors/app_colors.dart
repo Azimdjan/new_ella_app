@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-abstract class ThemeColors {
+class ThemeColors {
   static const primaryColor = Color(0xFF7165E5);
   static const errorColor = Color(0xFFF2271C);
   static const checkboxColor = Color(0xFF22B573);
   static const disabledColor = Color(0xFFEEF0F2);
+  static const subtitle2Color = Color(0xFFA6A6A6);
 }
 
 class LightThemeColors extends ThemeColors {
@@ -13,6 +14,7 @@ class LightThemeColors extends ThemeColors {
   static const textColor = Color(0xFF000000);
   static const smallTextColor = Color(0xFF9AA6AC);
   static final dividerColor = const Color(0xFF000000).withOpacity(0.05);
+  static const textFieldColor = Color(0xFFF3F3F3);
 }
 
 class DarkThemeColors extends ThemeColors {

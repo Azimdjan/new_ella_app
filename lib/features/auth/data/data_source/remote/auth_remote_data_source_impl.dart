@@ -29,10 +29,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       Constants.baseUrl + SIGN_IN_URL,
       data: jsonEncode(signInRequestModel.toJson()),
     );
-    if (response.statusCode == 200) {
-      return SignInResponseModel.fromJson(
-        jsonDecode(response.data),
-      );
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return SignInResponseModel.fromJson(response.data);
     } else {
       throw ServerException(message: '${response.data}');
     }
@@ -47,10 +45,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         signUpRequestModel.toJson(),
       ),
     );
-    if (response.statusCode == 200) {
-      return SignUpResponseModel.fromJson(
-        jsonDecode(response.data),
-      );
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return SignUpResponseModel.fromJson(response.data);
     } else {
       throw ServerException(
         message: response.data.toString(),

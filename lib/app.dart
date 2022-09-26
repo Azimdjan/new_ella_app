@@ -2,6 +2,7 @@ import 'package:ella/core/theme/bloc/theme_bloc.dart';
 import 'package:ella/router/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 class App extends StatelessWidget {
   App({Key? key}) : super(key: key);
@@ -24,13 +25,18 @@ class App extends StatelessWidget {
           darkTheme = state.darkTheme;
           themeMode = ThemeMode.system;
         }
-        return MaterialApp.router(
-          title: 'Ella',
-          debugShowCheckedModeBanner: false,
-          themeMode: themeMode,
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          routerConfig: router,
+        return KeyboardDismisser(
+          gestures: const [
+            GestureType.onTap,
+          ],
+          child: MaterialApp.router(
+            title: 'Ella',
+            debugShowCheckedModeBanner: false,
+            themeMode: themeMode,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            routerConfig: router,
+          ),
         );
       },
     );

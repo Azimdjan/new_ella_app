@@ -1,9 +1,12 @@
 import 'package:ella/app.dart';
+import 'package:ella/features/auth/presentation/bloc/login/login_bloc.dart';
+import 'package:ella/features/auth/presentation/bloc/register_bloc/register_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'core/theme/bloc/theme_bloc.dart';
 import 'injector_container.dart' as di;
+import 'injector_container.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -18,8 +21,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ThemeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => sl<LoginBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<RegisterBloc>(),
+        ),
+      ],
       child: App(),
     );
   }

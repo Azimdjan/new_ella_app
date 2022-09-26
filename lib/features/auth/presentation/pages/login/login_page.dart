@@ -1,6 +1,14 @@
+import 'package:ella/core/mixins/login_mixin.dart';
+import 'package:ella/core/theme/colors/app_colors.dart';
+import 'package:ella/features/auth/presentation/bloc/login/login_bloc.dart';
+import 'package:ella/features/auth/presentation/pages/login/widgets/sign_up_types.dart';
+import 'package:ella/features/auth/presentation/pages/login/widgets/welcome_texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../../router/name_routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -10,33 +18,195 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-
+class _LoginPageState extends State<LoginPage> with LoginMixin {
   @override
-  void dispose() {
-    debugPrint("Login disposed");
-    super.dispose();
+  void initState() {
+    initTextControllers();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        child: Center(
-          child: Column(
-            children: [
-              Text("Login Page"),
-              ElevatedButton(
-                onPressed: () {
-                  context.go(Routes.register);
-                },
-                child: Text("To Register page"),
+      body: BlocConsumer<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state is LoginError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+                backgroundColor: Theme.of(context).errorColor,
               ),
-            ],
-          ),
-        ),
+            );
+          }
+          if (state is LoginSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "Successfull",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+                backgroundColor: Theme.of(context).focusColor,
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is LoginLoading,
+            opacity: 0,
+            child: SafeArea(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.only(
+                  left: 25,
+                  right: 25,
+                  top: 46,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const WelcomeText(
+                      title: 'Sunt capioes amor',
+                      subtitle: 'Cum equiso velum, omnes brabeutaes '
+                          'examinare bassus, ferox elevatuses.',
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    CustomTextField(
+                      controller: emailController,
+                      validator: (value) {},
+                      textInputType: TextInputType.emailAddress,
+                      onChanged: (email) {
+                        context.read<LoginBloc>().add(
+                              LoginEmailTyped(email: email),
+                            );
+                      },
+                      focusNode: emailFocus,
+                      textCapitalization: TextCapitalization.none,
+                      hintText: "Enter email",
+                      nextFocusNode: passwordFocus,
+                      labelText: "Email",
+                      labelTextStyle:
+                          Theme.of(context).primaryTextTheme.bodyText2,
+                      errorText: (state is LoginTypedEmail)
+                          ? state.errorMessage
+                          : null,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    CustomTextField(
+                      controller: passwordController,
+                      validator: (value) {
+                        return null;
+                      },
+                      onChanged: (password) {
+                        context.read<LoginBloc>().add(
+                              LoginPasswordTyped(
+                                password: password,
+                              ),
+                            );
+                      },
+                      focusNode: passwordFocus,
+                      textInputType: TextInputType.visiblePassword,
+                      textInputAction: TextInputAction.done,
+                      textCapitalization: TextCapitalization.none,
+                      hintText: "Enter password",
+                      labelText: "Password",
+                      obscure: true,
+                      labelTextStyle:
+                          Theme.of(context).primaryTextTheme.bodyText2,
+                      errorText: (state is LoginTypedPassword)
+                          ? state.errorMessage
+                          : null,
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Forgot Password?',
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    ElevatedButton(
+                      onPressed: (state is LoginTypedEmail)
+                          ? state.isValid
+                              ? () {
+                                  context.read<LoginBloc>().add(
+                                        LoginButtonPressed(
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                        ),
+                                      );
+                                }
+                              : null
+                          : (state is LoginTypedPassword)
+                              ? state.isValid
+                                  ? () {
+                                      context.read<LoginBloc>().add(
+                                            LoginButtonPressed(
+                                              email: emailController.text,
+                                              password: passwordController.text,
+                                            ),
+                                          );
+                                    }
+                                  : null
+                              : () {
+                                  context.read<LoginBloc>().add(
+                                        LoginButtonPressed(
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                        ),
+                                      );
+                                },
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Center(
+                          child: Text(
+                            "Sign In",
+                            style: Theme.of(context)
+                                .primaryTextTheme
+                                .bodyText2
+                                ?.copyWith(
+                                  color: Colors.white,
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    if (MediaQuery.of(context).viewInsets.bottom == 0)
+                      SignUpTypes(
+                        emailOnTap: () {
+                          context.push(Routes.register);
+                        },
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    disposeTextControllers();
+    super.dispose();
   }
 }
