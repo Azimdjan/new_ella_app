@@ -1,6 +1,7 @@
 import 'package:ella/core/mixins/register_mixin.dart';
 import 'package:ella/core/widgets/custom_text_field.dart';
 import 'package:ella/features/auth/presentation/pages/login/widgets/welcome_texts.dart';
+import 'package:ella/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -25,8 +26,44 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalization.of(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              AppLocalization.delegate
+                  .load(const Locale.fromSubtags(languageCode: 'uz'));
+            },
+            icon: Icon(
+              Icons.language,
+              size: 26,
+              color: Theme.of(context).errorColor,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              AppLocalization.delegate
+                  .load(const Locale.fromSubtags(languageCode: 'en'));
+            },
+            icon: Icon(
+              Icons.language,
+              size: 26,
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              AppLocalization.delegate
+                  .load(const Locale.fromSubtags(languageCode: 'ru'));
+            },
+            icon: const Icon(
+              Icons.language,
+              size: 26,
+            ),
+          ),
+        ],
+      ),
       body: BlocConsumer<RegisterBloc, RegisterState>(
         listener: (context, state) {
           if (state.errors != null) {
@@ -59,10 +96,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const WelcomeText(
-                      title: 'Nunquam acquirere racana.',
-                      subtitle:
-                          'All honorable moons love each other, only great suns have a grace.',
+                    WelcomeText(
+                      title: localization.welcome,
+                      subtitle: localization.welcomeSubtitle,
                     ),
                     const SizedBox(
                       height: 32,
@@ -76,9 +112,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
                       textInputType: TextInputType.name,
                       focusNode: firstNameFocus,
                       textCapitalization: TextCapitalization.words,
-                      hintText: "Enter first name",
+                      hintText: localization.enterFirstName,
                       nextFocusNode: lastNameFocus,
-                      labelText: "First Name",
+                      labelText: localization.firstName,
                       labelTextStyle:
                           Theme.of(context).primaryTextTheme.bodyText2,
                       errorText: state.errors == RegisterInputErrors.firstName
@@ -97,9 +133,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
                       textInputType: TextInputType.name,
                       focusNode: lastNameFocus,
                       textCapitalization: TextCapitalization.words,
-                      hintText: "Enter last name",
+                      hintText: localization.enterLastName,
                       nextFocusNode: emailFocus,
-                      labelText: "Last Name",
+                      labelText: localization.lastName,
                       labelTextStyle:
                           Theme.of(context).primaryTextTheme.bodyText2,
                       errorText: state.errors == RegisterInputErrors.lastName
@@ -118,9 +154,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
                       textInputType: TextInputType.emailAddress,
                       focusNode: emailFocus,
                       textCapitalization: TextCapitalization.words,
-                      hintText: "Enter email",
+                      hintText: localization.enterEmail,
                       nextFocusNode: passwordFocus,
-                      labelText: "Email",
+                      labelText: localization.email,
                       labelTextStyle:
                           Theme.of(context).primaryTextTheme.bodyText2,
                       errorText: state.errors == RegisterInputErrors.email
@@ -139,9 +175,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
                       focusNode: passwordFocus,
                       textInputType: TextInputType.visiblePassword,
                       textCapitalization: TextCapitalization.none,
-                      hintText: "Enter password",
+                      hintText: localization.enterPassword,
                       nextFocusNode: confirmPasswordFocus,
-                      labelText: "Password",
+                      labelText: localization.enterPassword,
                       obscure: true,
                       labelTextStyle:
                           Theme.of(context).primaryTextTheme.bodyText2,
@@ -161,9 +197,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
                       focusNode: confirmPasswordFocus,
                       textInputType: TextInputType.visiblePassword,
                       textCapitalization: TextCapitalization.none,
-                      hintText: "Enter confirm password",
+                      hintText: localization.enterConfirmPassword,
                       textInputAction: TextInputAction.done,
-                      labelText: "Confirm Password",
+                      labelText: localization.confirmPassword,
                       obscure: true,
                       labelTextStyle:
                           Theme.of(context).primaryTextTheme.bodyText2,
@@ -194,7 +230,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
                         },
                         child: Center(
                           child: Text(
-                            'Sign Up',
+                            localization.signUp,
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .bodyText2

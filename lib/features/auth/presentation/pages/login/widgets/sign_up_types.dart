@@ -1,3 +1,4 @@
+import 'package:ella/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import 'circle_logos_widget.dart';
@@ -9,6 +10,7 @@ class SignUpTypes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalization.of(context);
     return Column(
       children: [
         const SizedBox(
@@ -30,7 +32,7 @@ class SignUpTypes extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                "Or Sign Up with",
+                localization.orSignUpWith,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText2,
               ),

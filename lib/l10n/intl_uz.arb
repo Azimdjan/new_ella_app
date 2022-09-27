@@ -1,0 +1,20 @@
+{
+  "enterEmail": "Elektron pochtani kiriting",
+  "enterPassword": "Parolni kiriting",
+  "enterFirstName": "Ismni kiriting",
+  "enterLastName": "Familiyani kiriting",
+  "enterConfirmPassword": "Tasdiqlash parolini kiriting",
+  "firstName": "Ism",
+  "lastName": "Familiya",
+  "email": "Elektron pochta",
+  "password": "Parol",
+  "confirmPassword": "Parolni tasdiqlang",
+  "signUp": "Ro'yxatdan o'tish",
+  "signIn": "Kirish",
+  "welcomeBack": "Xush kelibsiz",
+  "welcome": "Xush kelibsiz",
+  "welcomeSubtitle": "Barcha sharafli oylar bir-birini sevadi, faqat buyuk quyoshlar inoyatga ega",
+  "welcomeBackSubtitle": "Barcha sharafli oylar bir-birlarini sevadilar, faqat buyuk quyoshlar inoyatga ega",
+  "forgotPassword" : "Parolni unutdingizmi?",
+  "orSignUpWith" : "Yoki ro'yxatdan o'ting"
+}

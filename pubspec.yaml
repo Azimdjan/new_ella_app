@@ -61,3 +61,8 @@ flutter_native_splash:
           weight: 400
 flutter_intl:
   enabled: true
+  class_name: AppLocalization
+  arb-dir: lib/localization/l10n
+  preferred-supported-locales:
+    - en
+  use-deferred-loading: true

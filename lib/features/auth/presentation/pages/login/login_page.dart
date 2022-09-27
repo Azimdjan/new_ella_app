@@ -2,6 +2,7 @@ import 'package:ella/core/mixins/login_mixin.dart';
 import 'package:ella/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:ella/features/auth/presentation/pages/login/widgets/sign_up_types.dart';
 import 'package:ella/features/auth/presentation/pages/login/widgets/welcome_texts.dart';
+import 'package:ella/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -26,6 +27,7 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalization.of(context);
     return Scaffold(
       body: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
@@ -70,10 +72,9 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const WelcomeText(
-                      title: 'Sunt capioes amor',
-                      subtitle: 'Cum equiso velum, omnes brabeutaes '
-                          'examinare bassus, ferox elevatuses.',
+                    WelcomeText(
+                      title: localization.welcomeBack,
+                      subtitle: localization.welcomeBackSubtitle,
                     ),
                     const SizedBox(
                       height: 32,
@@ -89,9 +90,9 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
                       },
                       focusNode: emailFocus,
                       textCapitalization: TextCapitalization.none,
-                      hintText: "Enter email",
+                      hintText: localization.enterEmail,
                       nextFocusNode: passwordFocus,
-                      labelText: "Email",
+                      labelText: localization.email,
                       labelTextStyle:
                           Theme.of(context).primaryTextTheme.bodyText2,
                       errorText: (state is LoginTypedEmail)
@@ -117,8 +118,8 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
                       textInputType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
                       textCapitalization: TextCapitalization.none,
-                      hintText: "Enter password",
-                      labelText: "Password",
+                      hintText: localization.enterPassword,
+                      labelText: localization.password,
                       obscure: true,
                       labelTextStyle:
                           Theme.of(context).primaryTextTheme.bodyText2,
@@ -134,7 +135,7 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          'Forgot Password?',
+                          localization.forgotPassword,
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
@@ -177,7 +178,7 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
                         width: double.infinity,
                         child: Center(
                           child: Text(
-                            "Sign In",
+                            localization.signIn,
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .bodyText2
