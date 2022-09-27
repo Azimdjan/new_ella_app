@@ -1,0 +1,20 @@
+{
+  "enterEmail": "Enter email",
+  "enterPassword": "Enter password",
+  "enterFirstName": "Enter firstname",
+  "enterLastName": "Enter lastname",
+  "enterConfirmPassword": "Enter confirm password",
+  "firstName": "FirstName",
+  "lastName": "LastName",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "signUp": "Sign Up",
+  "signIn": "Sign In",
+  "welcomeBack": "Welcome Back",
+  "welcome": "Welcome",
+  "welcomeSubtitle": "All honorable moons love each other, only great suns have grace",
+  "welcomeBackSubtitle": "All honorable moons love each other, only great suns have grace",
+  "forgotPassword" : "Forgot Password?",
+  "orSignUpWith" : "Or Sign Up with"
+}
