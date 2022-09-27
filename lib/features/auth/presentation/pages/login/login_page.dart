@@ -1,5 +1,4 @@
 import 'package:ella/core/mixins/login_mixin.dart';
-import 'package:ella/core/theme/colors/app_colors.dart';
 import 'package:ella/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:ella/features/auth/presentation/pages/login/widgets/sign_up_types.dart';
 import 'package:ella/features/auth/presentation/pages/login/widgets/welcome_texts.dart';
@@ -52,6 +51,7 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
                 backgroundColor: Theme.of(context).focusColor,
               ),
             );
+            context.go(Routes.steps);
           }
         },
         builder: (context, state) {

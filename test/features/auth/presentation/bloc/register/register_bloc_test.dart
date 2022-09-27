@@ -49,8 +49,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.FIRSTNAME_EMPTY,
           errors: RegisterInputErrors.firstName,
         ),
@@ -77,8 +78,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.LASTNAME_EMPTY,
           errors: RegisterInputErrors.lastName,
         ),
@@ -105,8 +107,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.EMAIL_EMPTY,
           errors: RegisterInputErrors.email,
         ),
@@ -133,8 +136,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.NOT_EMAIL,
           errors: RegisterInputErrors.email,
         ),
@@ -161,8 +165,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.PASSWORD_EMPTY,
           errors: RegisterInputErrors.password,
         ),
@@ -189,8 +194,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.PASSWORD_NOT_MATCH,
           errors: RegisterInputErrors.confirmPassword,
         ),
@@ -217,8 +223,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.PASSWORD_SHORT,
           errors: RegisterInputErrors.password,
         ),
@@ -245,8 +252,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterValidationError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: Validations.PASSWORD_LONG,
           errors: RegisterInputErrors.password,
         ),
@@ -304,8 +312,9 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterError(
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(
+          status: RegisterStatus.error,
           message: "Something went wrong",
         ),
       ],
@@ -345,8 +354,8 @@ void main() {
         );
       },
       expect: () => <RegisterState>[
-        const RegisterLoading(),
-        const RegisterSuccess(),
+        const RegisterState(status: RegisterStatus.loading),
+        const RegisterState(status: RegisterStatus.success),
       ],
     );
   });

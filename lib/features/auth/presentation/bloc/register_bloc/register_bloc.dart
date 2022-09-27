@@ -18,7 +18,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
     with RegisterValidation {
   final SignUp signUp;
 
-  RegisterBloc({required this.signUp}) : super(const RegisterInitial()) {
+  RegisterBloc({required this.signUp})
+      : super(const RegisterState(status: RegisterStatus.initial)) {
     on<RegisterButtonPressed>(_registerButtonPressedHandler);
   }
 
@@ -29,7 +30,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
     final email = EmailInput.dirty(event.email.trim());
     final password = PasswordInput.dirty(event.password.trim());
     final confirmPassword = event.confirmPassword.trim();
-    emit(const RegisterLoading());
+    emit(const RegisterState(status: RegisterStatus.loading));
     Map<RegisterInputErrors, String>? errorMessage = validateRegister(
       firstName,
       lastName,
@@ -48,19 +49,21 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
       final response = await signUp(Params(request));
       response.fold(
         (error) => emit(
-          RegisterError(
+          RegisterState(
+            status: RegisterStatus.error,
             message: (error is ServerFailure)
                 ? error.message
                 : Validations.INTERNET_FAILURE,
           ),
         ),
         (response) => emit(
-          const RegisterSuccess(),
+          const RegisterState(status: RegisterStatus.success),
         ),
       );
     } else {
       emit(
-        RegisterValidationError(
+        state.copyWith(
+          status: RegisterStatus.error,
           message: errorMessage.values.first,
           errors: errorMessage.keys.first,
         ),

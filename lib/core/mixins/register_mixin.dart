@@ -1,3 +1,4 @@
+import 'package:ella/features/auth/presentation/bloc/register_bloc/register_bloc.dart';
 import 'package:flutter/cupertino.dart';
 
 mixin RegisterMixin {
@@ -36,5 +37,26 @@ mixin RegisterMixin {
     emailFocus.dispose();
     passwordFocus.dispose();
     confirmPasswordFocus.dispose();
+  }
+
+  void requestFocusNode(RegisterInputErrors? errors) {
+    switch (errors) {
+      case RegisterInputErrors.firstName:
+        firstNameFocus.requestFocus();
+        break;
+      case RegisterInputErrors.lastName:
+        lastNameFocus.requestFocus();
+        break;
+      case RegisterInputErrors.email:
+        emailFocus.requestFocus();
+        break;
+      case RegisterInputErrors.password:
+        passwordFocus.requestFocus();
+        break;
+      case RegisterInputErrors.confirmPassword:
+        confirmPasswordFocus.requestFocus();
+        break;
+      default:
+    }
   }
 }

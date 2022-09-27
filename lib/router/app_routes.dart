@@ -1,3 +1,4 @@
+import 'package:ella/features/steps/presentation/pages/steps_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,6 +23,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: Routes.register,
       builder: (context, state) => const RegisterPage(),
+    ),
+    GoRoute(
+      path: Routes.steps,
+      builder: (context, state) => const StepsPage(),
     ),
   ],
 );
