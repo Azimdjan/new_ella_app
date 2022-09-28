@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:ella/core/app_bloc/app_bloc.dart';
+import 'package:ella/core/local_source/local_source.dart';
 import 'package:ella/core/platform/network_info.dart';
 import 'package:ella/features/auth/data/data_source/local/auth_local_data_source_impl.dart';
 import 'package:ella/features/auth/data/data_source/remote/auth_remote_data_source_impl.dart';
@@ -38,6 +40,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => InternetConnectionCheckerPlus());
   //Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerSingleton<LocalSource>(LocalSource(_box));
+  sl.registerSingleton<AppBloc>(AppBloc());
   // Features
   authFeature();
 }

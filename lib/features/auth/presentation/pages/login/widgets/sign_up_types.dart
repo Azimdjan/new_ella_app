@@ -1,5 +1,8 @@
+import 'package:ella/core/app_bloc/app_bloc.dart';
+import 'package:ella/core/theme/app_theme.dart';
 import 'package:ella/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'circle_logos_widget.dart';
 
@@ -59,14 +62,26 @@ class SignUpTypes extends StatelessWidget {
           children: [
             CircleLogosWidget(
               iconName: Icons.facebook,
-              onTap: () {},
+              onTap: () {
+                context.read<AppBloc>().add(
+                      AppThemeSwitchLight(
+                        lightTheme: lightThemes[LightThemes.violetTheme]!,
+                      ),
+                    );
+              },
             ),
             const SizedBox(
               width: 16,
             ),
             CircleLogosWidget(
               iconName: Icons.apple,
-              onTap: () {},
+              onTap: () {
+                context.read<AppBloc>().add(
+                      AppThemeSwitchDark(
+                        darkTheme: darkThemes[DarkThemes.violetTheme]!,
+                      ),
+                    );
+              },
             ),
             const SizedBox(
               width: 16,

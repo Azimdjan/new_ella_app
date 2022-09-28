@@ -1,3 +1,4 @@
+import 'package:ella/core/app_bloc/app_bloc.dart';
 import 'package:ella/core/mixins/register_mixin.dart';
 import 'package:ella/core/widgets/custom_text_field.dart';
 import 'package:ella/features/auth/presentation/pages/login/widgets/welcome_texts.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../../injector_container.dart';
 import '../../../../../router/name_routes.dart';
 import '../../bloc/register_bloc/register_bloc.dart';
 
@@ -32,8 +34,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
         actions: [
           IconButton(
             onPressed: () {
-              AppLocalization.delegate
-                  .load(const Locale.fromSubtags(languageCode: 'uz'));
+              sl<AppBloc>().add(const AppChangeLocale('uz'));
             },
             icon: Icon(
               Icons.language,
@@ -43,8 +44,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
           ),
           IconButton(
             onPressed: () {
-              AppLocalization.delegate
-                  .load(const Locale.fromSubtags(languageCode: 'en'));
+              sl<AppBloc>().add(const AppChangeLocale('en'));
             },
             icon: Icon(
               Icons.language,
@@ -54,8 +54,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
           ),
           IconButton(
             onPressed: () {
-              AppLocalization.delegate
-                  .load(const Locale.fromSubtags(languageCode: 'ru'));
+              sl<AppBloc>().add(const AppChangeLocale('ru'));
             },
             icon: const Icon(
               Icons.language,

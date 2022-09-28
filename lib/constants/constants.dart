@@ -17,3 +17,7 @@ class Validations {
   static const PASSWORD_NOT_MATCH = 'Passwords do not match';
   static const INTERNET_FAILURE = 'No Internet';
 }
+
+class AppKeys {
+  static const LOCALE = 'locale';
+}

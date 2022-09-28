@@ -1,10 +1,10 @@
 import 'package:ella/app.dart';
+import 'package:ella/core/app_bloc/app_bloc.dart';
 import 'package:ella/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:ella/features/auth/presentation/bloc/register_bloc/register_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'core/theme/bloc/theme_bloc.dart';
 import 'injector_container.dart' as di;
 import 'injector_container.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ThemeBloc(),
+          create: (context) => sl<AppBloc>(),
         ),
         BlocProvider(
           create: (context) => sl<LoginBloc>(),
