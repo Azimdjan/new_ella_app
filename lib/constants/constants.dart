@@ -20,4 +20,9 @@ class Validations {
 
 class AppKeys {
   static const LOCALE = 'locale';
+  static const ACCESSTOKEN = 'access_token';
+  static const FIRSTNAME = 'firstname';
+  static const LASTNAME = 'lastname';
+  static const EMAIL = 'email';
+  static const PASSWORD = 'password';
 }

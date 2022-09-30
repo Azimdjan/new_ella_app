@@ -31,6 +31,9 @@ final violetLightTheme = appTheme.copyWith(
   dividerTheme: appTheme.dividerTheme.copyWith(
     color: LightThemeColors.dividerColor,
   ),
+  colorScheme: const ColorScheme.light(
+    secondary: Colors.black,
+  ),
   primaryTextTheme: const TextTheme(
     headline1: TextStyle(
       fontSize: 36,
@@ -200,6 +203,9 @@ final violetDarkTheme = appTheme.copyWith(
     foregroundColor: DarkThemeColors.scaffoldBackgroundColor,
     backgroundColor: DarkThemeColors.backgroundColor,
     surfaceTintColor: DarkThemeColors.scaffoldBackgroundColor,
+  ),
+  colorScheme: const ColorScheme.dark(
+    secondary: Colors.white,
   ),
   primaryTextTheme: const TextTheme(
     headline1: TextStyle(

@@ -40,20 +40,7 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
             );
           }
           if (state is LoginSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  "Successfull",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1
-                      ?.copyWith(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                backgroundColor: Theme.of(context).focusColor,
-              ),
-            );
-            context.go(Routes.steps);
+            context.go(Routes.home);
           }
         },
         builder: (context, state) {

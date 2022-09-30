@@ -229,6 +229,56 @@ class AppLocalization {
       args: [],
     );
   }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calendar`
+  String get calendar {
+    return Intl.message(
+      'Calendar',
+      name: 'calendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advices`
+  String get advices {
+    return Intl.message(
+      'Advices',
+      name: 'advices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Magic Chat`
+  String get magic_chat {
+    return Intl.message(
+      'Magic Chat',
+      name: 'magic_chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `profile`
+  String get profile {
+    return Intl.message(
+      'profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

@@ -3,6 +3,7 @@ import 'package:ella/constants/constants.dart';
 import 'package:ella/core/inputs/email_input.dart';
 import 'package:ella/core/inputs/name_input.dart';
 import 'package:ella/core/inputs/password_input.dart';
+import 'package:ella/core/mixins/cache_mixin.dart';
 import 'package:ella/core/mixins/register_validation.dart';
 import 'package:ella/features/auth/domain/entities/sign_up/sign_up_request_entity.dart';
 import 'package:equatable/equatable.dart';
@@ -15,7 +16,7 @@ part 'register_event.dart';
 part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
-    with RegisterValidation {
+    with RegisterValidation, CacheMixin {
   final SignUp signUp;
 
   RegisterBloc({required this.signUp})
@@ -56,9 +57,18 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState>
                 : Validations.INTERNET_FAILURE,
           ),
         ),
-        (response) => emit(
-          const RegisterState(status: RegisterStatus.success),
-        ),
+        (response) {
+          setUserInfo(
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value,
+            password: password.value,
+            token: response.token ?? 'empty',
+          );
+          emit(
+            const RegisterState(status: RegisterStatus.success),
+          );
+        },
       );
     } else {
       emit(

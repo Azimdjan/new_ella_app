@@ -16,5 +16,10 @@
   "welcomeSubtitle": "Все благородные луны любят друг друга, только великие солнца обладают благодатью",
   "welcomeBackSubtitle": "Все благородные луны любят друг друга, только великие солнца обладают благодатью",
   "forgotPassword": "Забыли пароль?",
-  "orSignUpWith": "Или зарегистрироваться с помощью"
+  "orSignUpWith": "Или зарегистрироваться с помощью",
+  "home" : "Uy",
+  "calendar" : "Taqvim",
+  "advices" : "Maslahat",
+  "magic_chat" : "Sehrli suhbat",
+  "profile" : "Profil"
 }

@@ -16,5 +16,10 @@
   "welcomeSubtitle": "All honorable moons love each other, only great suns have grace",
   "welcomeBackSubtitle": "All honorable moons love each other, only great suns have grace",
   "forgotPassword" : "Forgot Password?",
-  "orSignUpWith" : "Or Sign Up with"
+  "orSignUpWith" : "Or Sign Up with",
+  "home" : "Home",
+  "calendar" : "Calendar",
+  "advices" : "Advices",
+  "magic_chat" : "Magic Chat",
+  "profile" : "profile"
 }

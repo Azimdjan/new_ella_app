@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:ella/core/error/failure.dart';
 import 'package:ella/core/inputs/email_input.dart';
 import 'package:ella/core/inputs/password_input.dart';
+import 'package:ella/core/mixins/cache_mixin.dart';
 import 'package:ella/features/auth/domain/entities/sign_in/sign_in_request_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ella/constants/constants.dart';
@@ -11,7 +12,7 @@ part 'login_event.dart';
 
 part 'login_state.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> {
+class LoginBloc extends Bloc<LoginEvent, LoginState> with CacheMixin {
   final SignIn signIn;
 
   LoginBloc({required this.signIn}) : super(LoginInitial()) {
@@ -96,12 +97,23 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     response.fold(
       (error) => emit(
         LoginError(
-          message: (error is ServerFailure) ? error.message : Validations.INTERNET_FAILURE,
+          message: (error is ServerFailure)
+              ? error.message
+              : Validations.INTERNET_FAILURE,
         ),
       ),
-      (response) => emit(
-        LoginSuccess(),
-      ),
+      (response) {
+        setUserInfo(
+          firstName: response.firstName ?? 'empty',
+          lastName: response.lastName ?? 'empty',
+          email: event.email,
+          password: event.password,
+          token: response.token ?? 'empty',
+        );
+        emit(
+          LoginSuccess(),
+        );
+      },
     );
   }
 }
