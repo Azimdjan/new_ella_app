@@ -27,6 +27,7 @@ class _MainPageState extends State<MainPage> {
         onTap: (index) => changeTap(context, index),
         selectedLabelStyle: Theme.of(context).textTheme.bodyText2,
         unselectedLabelStyle: Theme.of(context).textTheme.bodyText2,
+        landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
         items: [
           BottomNavigationBarItem(
             icon: Icon(

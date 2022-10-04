@@ -11,4 +11,13 @@ class ServerException implements Exception {
 
 class NoInternetException implements Exception {}
 
-class CacheException implements Exception {}
+class CacheException implements Exception {
+  final String message;
+
+  CacheException({required this.message});
+
+  @override
+  String toString() {
+    return message;
+  }
+}
