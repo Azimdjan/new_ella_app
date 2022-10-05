@@ -1,20 +1,19 @@
 config_version: 1.0 # Required. Only 1.0 available
 project_id: b96e76bd-f5b8-407f-8252-79345df1f0f7 # Required. Your project ID from: https://app.localizely.com/projects
 file_type: flutter_arb # Required. Available values : android_xml, ios_strings, ios_stringsdict, java_properties, rails_yaml, angular_xlf, flutter_arb, dotnet_resx, po, json, csv
-branch: master # Optional. Your branch in Localizely project to sync files with.
 upload: # Required.
   files: # Required. List of files for upload to Localizely. Usually, it is just one file used for the main locale
     - file: lib/l10n/intl_uz.arb # Required. Path to the translation file
       locale_code: uz # Required. Locale code for the file. Examples: en, de-DE, zh-Hans-CN
-#  params: # Optional.
-#    overwrite: true # Optional, default: false. If the translation in a given language should be overwritten with modified translation from uploading file.
-#    reviewed: false # Optional, default: false. If uploading translations, that are added, should be marked as Reviewed. For uploading translations that are only modified it will have effect only if overwrite is set to true.
-##    tag_added: # Optional. List of tags to add to new translations from uploading file.
-#      - added
-#    tag_removed: # Optional. List of tags to add to removed translations from uploading file.
-#      - removed
-#    tag_updated: # Optional. List of tags to add to updated translations from uploading file.
-#      - updated
+  params: # Optional.
+    overwrite: true # Optional, default: false. If the translation in a given language should be overwritten with modified translation from uploading file.
+    reviewed: false # Optional, default: false. If uploading translations, that are added, should be marked as Reviewed. For uploading translations that are only modified it will have effect only if overwrite is set to true.
+    tag_added: # Optional. List of tags to add to new translations from uploading file.
+      - added
+    tag_removed: # Optional. List of tags to add to removed translations from uploading file.
+      - removed
+    tag_updated: # Optional. List of tags to add to updated translations from uploading file.
+      - updated
 download: # Required.
   files: # Required. List of files for download from Localizely.
     - file: lib/l10n/intl_en.arb # Required. Path to the translation file
