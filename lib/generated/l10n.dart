@@ -49,6 +49,236 @@ class AppLocalization {
   static AppLocalization? maybeOf(BuildContext context) {
     return Localizations.of<AppLocalization>(context, AppLocalization);
   }
+
+  /// `Advices`
+  String get advices {
+    return Intl.message(
+      'Advices',
+      name: 'advices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calendar`
+  String get calendar {
+    return Intl.message(
+      'Calendar',
+      name: 'calendar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter confirm password`
+  String get enterConfirmPassword {
+    return Intl.message(
+      'Enter confirm password',
+      name: 'enterConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter email`
+  String get enterEmail {
+    return Intl.message(
+      'Enter email',
+      name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter firstname`
+  String get enterFirstName {
+    return Intl.message(
+      'Enter firstname',
+      name: 'enterFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter lastname`
+  String get enterLastName {
+    return Intl.message(
+      'Enter lastname',
+      name: 'enterLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter password`
+  String get enterPassword {
+    return Intl.message(
+      'Enter password',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FirstName`
+  String get firstName {
+    return Intl.message(
+      'FirstName',
+      name: 'firstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LastName`
+  String get lastName {
+    return Intl.message(
+      'LastName',
+      name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Magic Chat`
+  String get magic_chat {
+    return Intl.message(
+      'Magic Chat',
+      name: 'magic_chat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Or Sign Up with`
+  String get orSignUpWith {
+    return Intl.message(
+      'Or Sign Up with',
+      name: 'orSignUpWith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get signIn {
+    return Intl.message(
+      'Sign In',
+      name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signUp {
+    return Intl.message(
+      'Sign Up',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome`
+  String get welcome {
+    return Intl.message(
+      'Welcome',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome back`
+  String get welcomeBack {
+    return Intl.message(
+      'Welcome back',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All honorable moons love each other, only great suns have grace`
+  String get welcomeBackSubtitle {
+    return Intl.message(
+      'All honorable moons love each other, only great suns have grace',
+      name: 'welcomeBackSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All honorable moons love each other, only great suns have grace`
+  String get welcomeSubtitle {
+    return Intl.message(
+      'All honorable moons love each other, only great suns have grace',
+      name: 'welcomeSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
@@ -57,6 +287,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ru'),
       Locale.fromSubtags(languageCode: 'uz'),
     ];
   }

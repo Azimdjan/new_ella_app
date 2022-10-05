@@ -21,5 +21,39 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'uz';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "advices": MessageLookupByLibrary.simpleMessage("Advices"),
+        "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Parolni tasdiqlang"),
+        "email": MessageLookupByLibrary.simpleMessage("Elektron pochta"),
+        "enterConfirmPassword": MessageLookupByLibrary.simpleMessage(
+            "Tasdiqlash parolini kiriting"),
+        "enterEmail":
+            MessageLookupByLibrary.simpleMessage("Elektron pochtani kiriting"),
+        "enterFirstName":
+            MessageLookupByLibrary.simpleMessage("Ismni kiriting"),
+        "enterLastName":
+            MessageLookupByLibrary.simpleMessage("Familiyani kiriting"),
+        "enterPassword":
+            MessageLookupByLibrary.simpleMessage("Parolni kiriting"),
+        "firstName": MessageLookupByLibrary.simpleMessage("Ism"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Parolni unutdingizmi?"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Familiya"),
+        "magic_chat": MessageLookupByLibrary.simpleMessage("Magic Chat"),
+        "orSignUpWith":
+            MessageLookupByLibrary.simpleMessage("Yoki ro\'yxatdan o\'ting"),
+        "password": MessageLookupByLibrary.simpleMessage("Parol"),
+        "profile": MessageLookupByLibrary.simpleMessage("profile"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Kirish"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Ro\'yxatdan o\'tish"),
+        "welcome": MessageLookupByLibrary.simpleMessage("Xush kelibsiz"),
+        "welcomeBack": MessageLookupByLibrary.simpleMessage("Xush kelibsiz"),
+        "welcomeBackSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Barcha sharafli oylar bir-birlarini sevadilar, faqat buyuk quyoshlar inoyatga ega"),
+        "welcomeSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Barcha sharafli oylar bir-birini sevadi, faqat buyuk quyoshlar inoyatga ega")
+      };
 }

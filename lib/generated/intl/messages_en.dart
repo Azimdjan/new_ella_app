@@ -21,5 +21,35 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "advices": MessageLookupByLibrary.simpleMessage("Advices"),
+        "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "enterConfirmPassword":
+            MessageLookupByLibrary.simpleMessage("Enter confirm password"),
+        "enterEmail": MessageLookupByLibrary.simpleMessage("Enter email"),
+        "enterFirstName":
+            MessageLookupByLibrary.simpleMessage("Enter firstname"),
+        "enterLastName": MessageLookupByLibrary.simpleMessage("Enter lastname"),
+        "enterPassword": MessageLookupByLibrary.simpleMessage("Enter password"),
+        "firstName": MessageLookupByLibrary.simpleMessage("FirstName"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "lastName": MessageLookupByLibrary.simpleMessage("LastName"),
+        "magic_chat": MessageLookupByLibrary.simpleMessage("Magic Chat"),
+        "orSignUpWith": MessageLookupByLibrary.simpleMessage("Or Sign Up with"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome back"),
+        "welcomeBackSubtitle": MessageLookupByLibrary.simpleMessage(
+            "All honorable moons love each other, only great suns have grace"),
+        "welcomeSubtitle": MessageLookupByLibrary.simpleMessage(
+            "All honorable moons love each other, only great suns have grace")
+      };
 }
