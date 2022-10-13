@@ -1,15 +1,23 @@
-class ArticleEntity {
+import 'package:equatable/equatable.dart';
+
+class ArticleEntity extends Equatable {
   final Article? data;
 
-  ArticleEntity(this.data);
+  const ArticleEntity(this.data);
+
+  @override
+  List<Object?> get props => [data];
 }
 
-class Article {
+class Article extends Equatable {
   final String? title;
   final num? id;
   final String? language;
   final num? order;
   final String? body;
 
-  Article(this.title, this.id, this.language, this.order, this.body);
+  const Article(this.title, this.id, this.language, this.order, this.body);
+
+  @override
+  List<Object?> get props => [title, id, language, order, body];
 }

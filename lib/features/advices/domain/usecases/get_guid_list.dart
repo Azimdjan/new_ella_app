@@ -16,7 +16,7 @@ class GetGuidList extends UseCase<GuidEntity, Params> {
 }
 
 class Params {
-  final String id;
+  final num id;
   final bool isCache;
 
   Params(this.id, {this.isCache = false});

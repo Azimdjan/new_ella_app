@@ -5,7 +5,13 @@ import '../../models/guid_list/guid_list_response.dart';
 abstract class AdviceLocalDataSource {
   Future<CategoryListResponse> getCategoryList();
 
-  Future<GuidResponse> getGuidList(String id);
+  Future<GuidResponse> getGuidList(num id);
 
-  Future<ArticleResponse> getArticle(String id);
+  Future<ArticleResponse> getArticle(num id);
+
+  Future<void> setCategoryList(CategoryListResponse categoryListResponse);
+
+  Future<void> setGuidList(GuidResponse guidResponse, num id);
+
+  Future<void> setArticle(ArticleResponse articleResponse, num id);
 }

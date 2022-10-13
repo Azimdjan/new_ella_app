@@ -16,6 +16,7 @@ class Validations {
   static const LASTNAME_LONG = 'Lastname too long';
   static const PASSWORD_NOT_MATCH = 'Passwords do not match';
   static const INTERNET_FAILURE = 'No Internet';
+  static const SOMETHING_WENT_WRONG = 'Something went wrong!';
 }
 
 class AppKeys {
@@ -25,4 +26,18 @@ class AppKeys {
   static const LASTNAME = 'lastname';
   static const EMAIL = 'email';
   static const PASSWORD = 'password';
+}
+
+class Urls {
+  static const SIGN_IN_URL = '/v1/users/sign_in/';
+  static const SIGN_UP_URL = '/v1/users/sign_up/';
+  static const GET_CATEGORY_LIST_URL = 'v1/categories/';
+  static const GET_GUID_LIST_URL = '/v1/guides/';
+  static const GET_ARTICLE_URL = '/v1/articles/';
+}
+
+class DatabaseKeys {
+  static const CATEGORY_LIST = 'category_list/';
+  static const GUID_LIST = 'guid_list/';
+  static const ARTICLE = 'article/';
 }

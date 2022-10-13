@@ -6,7 +6,7 @@ import '../../models/article/article_response.dart';
 abstract class AdviceRemoteDataSource {
   Future<CategoryListResponse> getCategoryList();
 
-  Future<GuidResponse> getGuidList(String id);
+  Future<GuidResponse> getGuidList(num id);
 
-  Future<ArticleResponse> getArticle(String id);
+  Future<ArticleResponse> getArticle(num id);
 }

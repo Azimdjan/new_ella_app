@@ -66,7 +66,7 @@ class MockAdvicesRepository extends _i1.Mock implements _i3.AdvicesRepository {
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.CategoryListEntity>>);
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i7.GuidEntity>> getGuidList(
-    String? id,
+    num? id,
     bool? isCache,
   ) =>
       (super.noSuchMethod(
@@ -91,7 +91,7 @@ class MockAdvicesRepository extends _i1.Mock implements _i3.AdvicesRepository {
       ) as _i4.Future<_i2.Either<_i5.Failure, _i7.GuidEntity>>);
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i8.ArticleEntity>> getArticle(
-    String? id,
+    num? id,
     bool? isCache,
   ) =>
       (super.noSuchMethod(

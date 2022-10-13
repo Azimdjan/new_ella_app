@@ -56,7 +56,7 @@ extension ArticleResponseToEntity on ArticleResponse {
           : null;
       return entity.ArticleEntity(article);
     } else {
-      return entity.ArticleEntity(null);
+      return const entity.ArticleEntity(null);
     }
   }
 }

@@ -40,14 +40,14 @@ void main() {
     final data = fixture('sign_in_response_fixture');
     Response response = Response(
       requestOptions: RequestOptions(
-        path: SIGN_IN_URL,
+        path: Urls.SIGN_IN_URL,
         baseUrl: Constants.baseUrl,
         data: data,
       ),
       data: data,
       statusCode: 200,
     );
-    when(dio.post(Constants.baseUrl + SIGN_IN_URL,
+    when(dio.post(Constants.baseUrl + Urls.SIGN_IN_URL,
             data: jsonEncode(signInRequestModel.toJson())))
         .thenAnswer(
       (_) async => response,
@@ -55,7 +55,7 @@ void main() {
     final result = await authRepositoryImpl.signIn(signInRequestModel);
     verify(
       dio.post(
-        Constants.baseUrl + SIGN_IN_URL,
+        Constants.baseUrl + Urls.SIGN_IN_URL,
         data: jsonEncode(signInRequestModel.toJson()),
       ),
     );
@@ -65,13 +65,13 @@ void main() {
   test('verify sign in api is called with 400 error', () async {
     Response response = Response(
       requestOptions: RequestOptions(
-        path: SIGN_IN_URL,
+        path: Urls.SIGN_IN_URL,
         baseUrl: Constants.baseUrl,
       ),
       data: "Something went wrong",
       statusCode: 400,
     );
-    when(dio.post(Constants.baseUrl + SIGN_IN_URL,
+    when(dio.post(Constants.baseUrl + Urls.SIGN_IN_URL,
             data: jsonEncode(signInRequestModel.toJson())))
         .thenAnswer(
       (_) async => response,
@@ -90,16 +90,16 @@ void main() {
     final response = Response(
       requestOptions: RequestOptions(
         baseUrl: Constants.baseUrl,
-        path: SIGN_UP_URL,
+        path: Urls.SIGN_UP_URL,
       ),
       data: fixture('sign_up_response_fixture'),
       statusCode: 200,
     );
-    when(dio.post(Constants.baseUrl + SIGN_UP_URL,
+    when(dio.post(Constants.baseUrl + Urls.SIGN_UP_URL,
             data: jsonEncode(signUpRequestModel.toJson())))
         .thenAnswer((realInvocation) async => response);
     final result = await authRepositoryImpl.signUp(signUpRequestModel);
-    verify(dio.post(Constants.baseUrl + SIGN_UP_URL,
+    verify(dio.post(Constants.baseUrl + Urls.SIGN_UP_URL,
         data: jsonEncode(signUpRequestModel.toJson())));
     expect(result, signUpResponseModel);
   });
@@ -108,12 +108,12 @@ void main() {
     final response = Response(
       requestOptions: RequestOptions(
         baseUrl: Constants.baseUrl,
-        path: SIGN_UP_URL,
+        path: Urls.SIGN_UP_URL,
       ),
       data: "Something went wrong",
       statusCode: 400,
     );
-    when(dio.post(Constants.baseUrl + SIGN_UP_URL,
+    when(dio.post(Constants.baseUrl + Urls.SIGN_UP_URL,
             data: jsonEncode(signUpRequestModel.toJson())))
         .thenAnswer((realInvocation) async => response);
     final call = authRepositoryImpl.signUp;

@@ -25,16 +25,18 @@ class AdviceRepositoryImpl implements AdvicesRepository {
 
   @override
   Future<Either<Failure, ArticleEntity>> getArticle(
-      String id, bool isCache) async {
+      num id, bool isCache) async {
     if (!isCache) {
       try {
         final response = await adviceRemoteDataSource.getArticle(id);
+        adviceLocalDataSource.setArticle(response, id);
         return Right(response.toEntity());
       } catch (e) {
         return Left(
           ServerFailure(
-              message:
-                  (e is ServerException) ? e.message : 'Something went wrong!'),
+            message:
+                (e is ServerException) ? e.message : 'Something went wrong!',
+          ),
         );
       }
     } else {
@@ -57,6 +59,7 @@ class AdviceRepositoryImpl implements AdvicesRepository {
     if (!isCache) {
       try {
         final response = await adviceRemoteDataSource.getCategoryList();
+        adviceLocalDataSource.setCategoryList(response);
         return Right(response.toEntity());
       } catch (e) {
         return Left(
@@ -80,11 +83,11 @@ class AdviceRepositoryImpl implements AdvicesRepository {
   }
 
   @override
-  Future<Either<Failure, GuidEntity>> getGuidList(
-      String id, bool isCache) async {
+  Future<Either<Failure, GuidEntity>> getGuidList(num id, bool isCache) async {
     if (!isCache) {
       try {
         final response = await adviceRemoteDataSource.getGuidList(id);
+        adviceLocalDataSource.setGuidList(response, id);
         return Right(response.toEntity());
       } catch (e) {
         return Left(

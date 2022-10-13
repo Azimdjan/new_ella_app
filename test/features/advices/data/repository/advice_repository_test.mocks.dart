@@ -86,7 +86,7 @@ class MockAdviceRemoteDataSource extends _i1.Mock
         )),
       ) as _i6.Future<_i2.CategoryListResponse>);
   @override
-  _i6.Future<_i3.GuidResponse> getGuidList(String? id) => (super.noSuchMethod(
+  _i6.Future<_i3.GuidResponse> getGuidList(num? id) => (super.noSuchMethod(
         Invocation.method(
           #getGuidList,
           [id],
@@ -100,7 +100,7 @@ class MockAdviceRemoteDataSource extends _i1.Mock
         )),
       ) as _i6.Future<_i3.GuidResponse>);
   @override
-  _i6.Future<_i4.ArticleResponse> getArticle(String? id) => (super.noSuchMethod(
+  _i6.Future<_i4.ArticleResponse> getArticle(num? id) => (super.noSuchMethod(
         Invocation.method(
           #getArticle,
           [id],
@@ -141,7 +141,7 @@ class MockAdviceLocalDataSource extends _i1.Mock
         )),
       ) as _i6.Future<_i2.CategoryListResponse>);
   @override
-  _i6.Future<_i3.GuidResponse> getGuidList(String? id) => (super.noSuchMethod(
+  _i6.Future<_i3.GuidResponse> getGuidList(num? id) => (super.noSuchMethod(
         Invocation.method(
           #getGuidList,
           [id],
@@ -155,7 +155,7 @@ class MockAdviceLocalDataSource extends _i1.Mock
         )),
       ) as _i6.Future<_i3.GuidResponse>);
   @override
-  _i6.Future<_i4.ArticleResponse> getArticle(String? id) => (super.noSuchMethod(
+  _i6.Future<_i4.ArticleResponse> getArticle(num? id) => (super.noSuchMethod(
         Invocation.method(
           #getArticle,
           [id],
@@ -169,6 +169,49 @@ class MockAdviceLocalDataSource extends _i1.Mock
           ),
         )),
       ) as _i6.Future<_i4.ArticleResponse>);
+  @override
+  _i6.Future<void> setCategoryList(
+          _i2.CategoryListResponse? categoryListResponse) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setCategoryList,
+          [categoryListResponse],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+  @override
+  _i6.Future<void> setGuidList(
+    _i3.GuidResponse? guidResponse,
+    num? id,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setGuidList,
+          [
+            guidResponse,
+            id,
+          ],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+  @override
+  _i6.Future<void> setArticle(
+    _i4.ArticleResponse? articleResponse,
+    num? id,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setArticle,
+          [
+            articleResponse,
+            id,
+          ],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
 }
 
 /// A class which mocks [NetworkInfo].

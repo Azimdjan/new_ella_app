@@ -68,6 +68,8 @@ void main() {
 
       verify(adviceRemoteDataSource.getCategoryList());
 
+      verify(adviceLocalDataSource.setCategoryList(categoryListResponse));
+
       verifyNoMoreInteractions(adviceRemoteDataSource);
     });
 
@@ -83,6 +85,8 @@ void main() {
       );
 
       verify(adviceRemoteDataSource.getCategoryList());
+
+      verifyNever(adviceLocalDataSource.setCategoryList(categoryListResponse));
 
       verifyNoMoreInteractions(adviceRemoteDataSource);
     });
@@ -115,7 +119,7 @@ void main() {
   });
 
   group('get guid list', () {
-    const id = "custom_id";
+    const id = 1233;
     test('successfully case', () async {
       when(adviceRemoteDataSource.getGuidList(id)).thenAnswer(
         (realInvocation) async => guidListResponse,
@@ -125,6 +129,8 @@ void main() {
       expect(result, Right(guidListResponse.toEntity()));
 
       verify(adviceRemoteDataSource.getGuidList(id));
+
+      verify(adviceLocalDataSource.setGuidList(guidListResponse, id));
 
       verifyNoMoreInteractions(adviceRemoteDataSource);
     });
@@ -141,6 +147,8 @@ void main() {
       );
 
       verify(adviceRemoteDataSource.getGuidList(id));
+
+      verifyNever(adviceLocalDataSource.setGuidList(guidListResponse, id));
 
       verifyNoMoreInteractions(adviceRemoteDataSource);
     });

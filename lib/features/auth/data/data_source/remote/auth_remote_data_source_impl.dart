@@ -9,9 +9,6 @@ import 'package:ella/features/auth/data/models/sign_up/Sign_up_request_model.dar
 import 'package:ella/features/auth/data/models/sign_up/sign_up_response_model.dart';
 import 'package:dio/dio.dart';
 
-const SIGN_IN_URL = '/v1/users/sign_in/';
-const SIGN_UP_URL = '/v1/users/sign_up/';
-
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final Dio dio;
 
@@ -26,7 +23,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<SignInResponseModel> signIn(
       SignInRequestModel signInRequestModel) async {
     final response = await dio.post(
-      Constants.baseUrl + SIGN_IN_URL,
+      Constants.baseUrl + Urls.SIGN_IN_URL,
       data: jsonEncode(signInRequestModel.toJson()),
     );
     if (response.statusCode == 200 || response.statusCode == 201) {
@@ -40,7 +37,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<SignUpResponseModel> signUp(
       SignUpRequestModel signUpRequestModel) async {
     final response = await dio.post(
-      Constants.baseUrl + SIGN_UP_URL,
+      Constants.baseUrl + Urls.SIGN_UP_URL,
       data: jsonEncode(
         signUpRequestModel.toJson(),
       ),

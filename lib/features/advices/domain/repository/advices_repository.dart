@@ -7,7 +7,7 @@ import 'package:ella/features/advices/domain/entities/guid_list_entity.dart';
 abstract class AdvicesRepository {
   Future<Either<Failure, CategoryListEntity>> getCategoryList(bool isCache);
 
-  Future<Either<Failure, GuidEntity>> getGuidList(String id, bool isCache);
+  Future<Either<Failure, GuidEntity>> getGuidList(num id, bool isCache);
 
-  Future<Either<Failure, ArticleEntity>> getArticle(String id, bool isCache);
+  Future<Either<Failure, ArticleEntity>> getArticle(num id, bool isCache);
 }
