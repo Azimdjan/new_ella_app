@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:ella/core/error/exceptions.dart';
 import 'package:ella/core/error/failure.dart';
 import 'package:ella/core/platform/network_info.dart';
@@ -11,6 +12,7 @@ import 'package:ella/features/advices/domain/entities/article_entity.dart';
 import 'package:ella/features/advices/domain/entities/category_list_entity.dart';
 import 'package:ella/features/advices/domain/entities/guid_list_entity.dart';
 import 'package:ella/features/advices/domain/repository/advices_repository.dart';
+import 'package:flutter/cupertino.dart';
 
 class AdviceRepositoryImpl implements AdvicesRepository {
   final AdviceRemoteDataSource adviceRemoteDataSource;
@@ -62,6 +64,7 @@ class AdviceRepositoryImpl implements AdvicesRepository {
         adviceLocalDataSource.setCategoryList(response);
         return Right(response.toEntity());
       } catch (e) {
+        debugPrint(e.toString());
         return Left(
           ServerFailure(
               message:

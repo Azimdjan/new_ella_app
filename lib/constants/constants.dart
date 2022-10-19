@@ -31,7 +31,7 @@ class AppKeys {
 class Urls {
   static const SIGN_IN_URL = '/v1/users/sign_in/';
   static const SIGN_UP_URL = '/v1/users/sign_up/';
-  static const GET_CATEGORY_LIST_URL = 'v1/categories/';
+  static const GET_CATEGORY_LIST_URL = '/v1/categories/';
   static const GET_GUID_LIST_URL = '/v1/guides/';
   static const GET_ARTICLE_URL = '/v1/articles/';
 }

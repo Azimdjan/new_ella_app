@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Или зарегистрироваться с помощью"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "profile": MessageLookupByLibrary.simpleMessage("профиль"),
+        "saved": MessageLookupByLibrary.simpleMessage("Сохраненное"),
         "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
         "signUp": MessageLookupByLibrary.simpleMessage("Зарегистрироваться"),
         "welcome": MessageLookupByLibrary.simpleMessage("Добро пожаловать"),

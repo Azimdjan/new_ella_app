@@ -24,7 +24,7 @@ class AdviceLocalDataSourceImpl implements AdviceLocalDataSource {
     );
     if (articleJson != null) {
       final article = ArticleResponse.fromJson(jsonDecode(articleJson));
-      if(article.data?.id == id) {
+      if (article.data?.id == id) {
         return article;
       } else {
         throw CacheException(message: misMatchingId);
@@ -63,7 +63,7 @@ class AdviceLocalDataSourceImpl implements AdviceLocalDataSource {
   @override
   Future<void> setArticle(ArticleResponse articleResponse, num id) async {
     final articleJson = jsonEncode(articleResponse.toJson());
-    await box.put(DatabaseKeys.ARTICLE, articleJson);
+    await box.put(DatabaseKeys.ARTICLE + id.toString(), articleJson);
   }
 
   @override
@@ -76,6 +76,6 @@ class AdviceLocalDataSourceImpl implements AdviceLocalDataSource {
   @override
   Future<void> setGuidList(GuidResponse guidResponse, num id) async {
     final guidJson = jsonEncode(guidResponse.toJson());
-    await box.put(DatabaseKeys.GUID_LIST, guidJson);
+    await box.put(DatabaseKeys.GUID_LIST + id.toString(), guidJson);
   }
 }

@@ -26,7 +26,7 @@ final appTheme = ThemeData(
 
 final violetLightTheme = appTheme.copyWith(
   backgroundColor: LightThemeColors.backgroundColor,
-  scaffoldBackgroundColor: LightThemeColors.backgroundColor,
+  scaffoldBackgroundColor: LightThemeColors.scaffoldBackgroundColor,
   brightness: Brightness.light,
   dividerTheme: appTheme.dividerTheme.copyWith(
     color: LightThemeColors.dividerColor,
@@ -71,9 +71,19 @@ final violetLightTheme = appTheme.copyWith(
     ),
   ),
   appBarTheme: const AppBarTheme(
+    elevation: 1,
     foregroundColor: LightThemeColors.scaffoldBackgroundColor,
     backgroundColor: LightThemeColors.backgroundColor,
     surfaceTintColor: LightThemeColors.scaffoldBackgroundColor,
+    shadowColor: Colors.black,
+    titleTextStyle: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.01,
+      color: Colors.black,
+    ),
+    toolbarHeight: 56,
+    scrolledUnderElevation: 1,
   ),
   textTheme: const TextTheme(
     headline1: TextStyle(
@@ -192,9 +202,10 @@ final violetLightTheme = appTheme.copyWith(
     ),
   ),
 );
+
 final violetDarkTheme = appTheme.copyWith(
   backgroundColor: DarkThemeColors.backgroundColor,
-  scaffoldBackgroundColor: DarkThemeColors.backgroundColor,
+  scaffoldBackgroundColor: DarkThemeColors.scaffoldBackgroundColor,
   brightness: Brightness.dark,
   dividerTheme: appTheme.dividerTheme.copyWith(
     color: DarkThemeColors.dividerColor,
@@ -203,6 +214,15 @@ final violetDarkTheme = appTheme.copyWith(
     foregroundColor: DarkThemeColors.scaffoldBackgroundColor,
     backgroundColor: DarkThemeColors.backgroundColor,
     surfaceTintColor: DarkThemeColors.scaffoldBackgroundColor,
+    elevation: 1,
+    titleTextStyle: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.01,
+      color: Colors.white,
+    ),
+    toolbarHeight: 56,
+    scrolledUnderElevation: 1,
   ),
   colorScheme: const ColorScheme.dark(
     secondary: Colors.white,

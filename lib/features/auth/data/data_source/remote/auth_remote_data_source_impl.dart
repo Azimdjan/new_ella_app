@@ -22,32 +22,42 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<SignInResponseModel> signIn(
       SignInRequestModel signInRequestModel) async {
-    final response = await dio.post(
-      Constants.baseUrl + Urls.SIGN_IN_URL,
-      data: jsonEncode(signInRequestModel.toJson()),
-    );
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      return SignInResponseModel.fromJson(response.data);
-    } else {
-      throw ServerException(message: '${response.data}');
+    try {
+      final response = await dio.post(
+        Constants.baseUrl + Urls.SIGN_IN_URL,
+        data: jsonEncode(signInRequestModel.toJson()),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return SignInResponseModel.fromJson(response.data);
+      } else {
+        throw ServerException.fromJson(response.data);
+      }
+    } on DioError catch (e) {
+      throw ServerException.fromJson(e.response?.data);
+    } on FormatException {
+      throw ServerException(message: Validations.SOMETHING_WENT_WRONG);
     }
   }
 
   @override
   Future<SignUpResponseModel> signUp(
       SignUpRequestModel signUpRequestModel) async {
-    final response = await dio.post(
-      Constants.baseUrl + Urls.SIGN_UP_URL,
-      data: jsonEncode(
-        signUpRequestModel.toJson(),
-      ),
-    );
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      return SignUpResponseModel.fromJson(response.data);
-    } else {
-      throw ServerException(
-        message: response.data.toString(),
+    try {
+      final response = await dio.post(
+        Constants.baseUrl + Urls.SIGN_UP_URL,
+        data: jsonEncode(
+          signUpRequestModel.toJson(),
+        ),
       );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return SignUpResponseModel.fromJson(response.data);
+      } else {
+        throw ServerException.fromJson(response.data);
+      }
+    } on DioError catch (e) {
+      throw ServerException.fromJson(e.response?.data);
+    } on FormatException {
+      throw ServerException(message: Validations.SOMETHING_WENT_WRONG);
     }
   }
 }

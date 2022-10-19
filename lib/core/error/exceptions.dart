@@ -3,9 +3,8 @@ class ServerException implements Exception {
 
   ServerException({required this.message});
 
-  @override
-  String toString() {
-    return message;
+  factory ServerException.fromJson(Map<String, dynamic> json) {
+    return ServerException(message: json['detail']);
   }
 }
 

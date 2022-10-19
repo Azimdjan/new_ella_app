@@ -78,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterMixin {
               ),
             );
           } else if (state.status == RegisterStatus.success) {
-            context.go(Routes.steps);
+            context.goNamed(Routes.steps);
           }
         },
         builder: (context, state) {

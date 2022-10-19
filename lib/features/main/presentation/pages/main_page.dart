@@ -95,19 +95,19 @@ class _MainPageState extends State<MainPage> {
     });
     switch (index) {
       case 0:
-        context.go(Routes.home);
+        context.goNamed(Routes.home);
         break;
       case 1:
-        context.go(Routes.calendar);
+        context.goNamed(Routes.calendar);
         break;
       case 2:
-        context.go(Routes.advices);
+        context.goNamed(Routes.advices);
         break;
       case 3:
-        context.go(Routes.magicChat);
+        context.goNamed(Routes.magicChat);
         break;
       case 4:
-        context.go(Routes.profile);
+        context.goNamed(Routes.profile);
         break;
     }
   }

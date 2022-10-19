@@ -17,9 +17,10 @@
   "welcomeBackSubtitle": "Barcha sharafli oylar bir-birlarini sevadilar, faqat buyuk quyoshlar inoyatga ega",
   "forgotPassword" : "Parolni unutdingizmi?",
   "orSignUpWith" : "Yoki ro'yxatdan o'ting",
-  "home" : "Home",
-  "calendar" : "Calendar",
-  "advices" : "Advices",
-  "magic_chat" : "Magic Chat",
-  "profile" : "profile"
+  "home" : "Uy",
+  "calendar" : "Taqvim",
+  "advices" : "Maslahatlar",
+  "magic_chat" : "Magiya",
+  "profile" : "Profil",
+  "saved": "Saqlangan"
 }

@@ -37,33 +37,60 @@ class CategoryListBloc extends Bloc<CategoryListEvent, CategoryListState> {
     emit(
       const CategoryListAdvices(status: CategoryStatus.loading),
     );
-    CategoryListEntity? categoryListEntityCached =
-        await getCategoryListAdviceMethod(
+    CategoryListEntity? categoryListEntityCached = await getCategoryFromCache(
       emit,
-      isCached: true,
     );
     await getCategoryListAdviceMethod(
       emit,
       categoryListEntityCached: categoryListEntityCached,
-      isCached: false,
     );
   }
 
-  Future<CategoryListEntity?> getCategoryListAdviceMethod(
-      Emitter<CategoryListState> emit,
-      {bool isCached = false,
-      CategoryListEntity? categoryListEntityCached}) async {
+  Future<CategoryListEntity?> getCategoryFromCache(
+    Emitter<CategoryListState> emit,
+  ) async {
     final categoryListEntity = await getCategoryList(
-      Params(isCache: isCached),
+      const Params(isCache: true),
     );
-    if (isCached) {
-      categoryFromCache(categoryListEntity, emit);
-    } else if (categoryListEntityCached != null) {
+    return categoryListEntity.fold(
+      (error) {
+        ///Need to think what can we do here
+        // emit(
+        //   CategoryListAdvices(
+        //     status: CategoryStatus.error,
+        //     categoryListEntity: categoryListEntityCached,
+        //     errorMessage: (error is CacheFailure)
+        //         ? error.message
+        //         : Validations.SOMETHING_WENT_WRONG,
+        //   ),
+        // );
+        return null;
+      },
+      (success) {
+        if ((success.data ?? []).isNotEmpty) {
+          emit(
+            CategoryListAdvices(
+              status: CategoryStatus.successfull,
+              categoryListEntity: success,
+            ),
+          );
+          return success;
+        } else {
+          return null;
+        }
+      },
+    );
+  }
+
+  Future<void> getCategoryListAdviceMethod(
+      Emitter<CategoryListState> emit,
+      {CategoryListEntity? categoryListEntityCached}) async {
+    final categoryListEntity = await getCategoryList();
+    if (categoryListEntityCached != null) {
       categoryComparison(categoryListEntity, emit, categoryListEntityCached);
     } else {
       categoryFirstTime(categoryListEntity, emit);
     }
-    return categoryListEntity.fold((error) => null, (success) => success);
   }
 
   void categoryFirstTime(Either<Failure, CategoryListEntity> categoryListEntity,
@@ -73,7 +100,7 @@ class CategoryListBloc extends Bloc<CategoryListEvent, CategoryListState> {
         emit(
           CategoryListAdvices(
             status: CategoryStatus.error,
-            errorMessage: (error is CacheFailure)
+            errorMessage: (error is ServerFailure)
                 ? error.message
                 : Validations.SOMETHING_WENT_WRONG,
           ),
@@ -110,7 +137,7 @@ class CategoryListBloc extends Bloc<CategoryListEvent, CategoryListState> {
           CategoryListAdvices(
             status: CategoryStatus.error,
             categoryListEntity: categoryListEntityCached,
-            errorMessage: (error is CacheFailure)
+            errorMessage: (error is ServerFailure)
                 ? error.message
                 : Validations.SOMETHING_WENT_WRONG,
           ),
@@ -138,38 +165,10 @@ class CategoryListBloc extends Bloc<CategoryListEvent, CategoryListState> {
     );
   }
 
-  void categoryFromCache(
-    Either<Failure, CategoryListEntity> categoryListEntity,
-    Emitter<CategoryListState> emit,
-  ) {
-    categoryListEntity.fold(
-      (error) {
-        ///Need to think what can we do here
-        // emit(
-        //   CategoryListAdvices(
-        //     status: CategoryStatus.error,
-        //     categoryListEntity: categoryListEntityCached,
-        //     errorMessage: (error is CacheFailure)
-        //         ? error.message
-        //         : Validations.SOMETHING_WENT_WRONG,
-        //   ),
-        // );
-      },
-      (success) {
-        if ((success.data ?? []).isNotEmpty) {
-          emit(
-            CategoryListAdvices(
-              status: CategoryStatus.successfull,
-              categoryListEntity: success,
-            ),
-          );
-        }
-      },
-    );
-  }
-
   //for showing saved advices
-  Future<void> showSavedAdvices(Emitter<CategoryListState> emit) async {}
+  Future<void> showSavedAdvices(Emitter<CategoryListState> emit) async {
+    emit(const CategoryListSavedAdvices(status: CategoryStatus.empty));
+  }
 
   ///To go guid page
   void _cardTapped(

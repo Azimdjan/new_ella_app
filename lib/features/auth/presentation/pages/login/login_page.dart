@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
             );
           }
           if (state is LoginSuccess) {
-            context.go(Routes.home);
+            context.goNamed(Routes.home);
           }
         },
         builder: (context, state) {
@@ -179,7 +179,7 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
                     if (MediaQuery.of(context).viewInsets.bottom == 0)
                       SignUpTypes(
                         emailOnTap: () {
-                          context.push(Routes.register);
+                          context.pushNamed(Routes.register);
                         },
                       ),
                   ],

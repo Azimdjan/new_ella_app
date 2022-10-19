@@ -22,8 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "advices": MessageLookupByLibrary.simpleMessage("Advices"),
-        "calendar": MessageLookupByLibrary.simpleMessage("Calendar"),
+        "advices": MessageLookupByLibrary.simpleMessage("Maslahatlar"),
+        "calendar": MessageLookupByLibrary.simpleMessage("Taqvim"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Parolni tasdiqlang"),
         "email": MessageLookupByLibrary.simpleMessage("Elektron pochta"),
@@ -40,13 +40,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "firstName": MessageLookupByLibrary.simpleMessage("Ism"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Parolni unutdingizmi?"),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "home": MessageLookupByLibrary.simpleMessage("Uy"),
         "lastName": MessageLookupByLibrary.simpleMessage("Familiya"),
-        "magic_chat": MessageLookupByLibrary.simpleMessage("Magic Chat"),
+        "magic_chat": MessageLookupByLibrary.simpleMessage("Magiya"),
         "orSignUpWith":
             MessageLookupByLibrary.simpleMessage("Yoki ro\'yxatdan o\'ting"),
         "password": MessageLookupByLibrary.simpleMessage("Parol"),
-        "profile": MessageLookupByLibrary.simpleMessage("profile"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profil"),
+        "saved": MessageLookupByLibrary.simpleMessage("Saqlangan"),
         "signIn": MessageLookupByLibrary.simpleMessage("Kirish"),
         "signUp": MessageLookupByLibrary.simpleMessage("Ro\'yxatdan o\'tish"),
         "welcome": MessageLookupByLibrary.simpleMessage("Xush kelibsiz"),
