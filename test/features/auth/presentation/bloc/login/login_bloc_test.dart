@@ -39,7 +39,8 @@ void main() {
         ),
       ),
       expect: () => <LoginState>[
-        const LoginTypedEmail(isValid: false, errorMessage: Validations.NOT_EMAIL),
+        const LoginTypedEmail(
+            isValid: false, errorMessage: Validations.NOT_EMAIL),
       ],
     );
 
@@ -53,7 +54,8 @@ void main() {
         ),
       ),
       expect: () => <LoginState>[
-        const LoginTypedEmail(isValid: false, errorMessage: Validations.EMAIL_EMPTY),
+        const LoginTypedEmail(
+            isValid: false, errorMessage: Validations.EMAIL_EMPTY),
       ],
     );
 
@@ -83,7 +85,8 @@ void main() {
         ),
       ),
       expect: () => <LoginState>[
-        const LoginTypedPassword(isValid: false, errorMessage: Validations.PASSWORD_SHORT),
+        const LoginTypedPassword(
+            isValid: false, errorMessage: Validations.PASSWORD_SHORT),
       ],
     );
 
@@ -97,7 +100,8 @@ void main() {
         ),
       ),
       expect: () => <LoginState>[
-        const LoginTypedPassword(isValid: false, errorMessage: Validations.PASSWORD_EMPTY),
+        const LoginTypedPassword(
+            isValid: false, errorMessage: Validations.PASSWORD_EMPTY),
       ],
     );
 
@@ -111,7 +115,8 @@ void main() {
         ),
       ),
       expect: () => <LoginState>[
-        const LoginTypedPassword(isValid: false, errorMessage: Validations.PASSWORD_LONG),
+        const LoginTypedPassword(
+            isValid: false, errorMessage: Validations.PASSWORD_LONG),
       ],
     );
 
@@ -142,7 +147,7 @@ void main() {
         jsonDecode(
           fixture('sign_in_response_fixture'),
         ),
-      );
+      ).toEntity();
     });
 
     blocTest<LoginBloc, LoginState>(

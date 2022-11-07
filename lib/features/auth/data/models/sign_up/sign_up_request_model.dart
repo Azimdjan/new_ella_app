@@ -1,19 +1,13 @@
 import 'package:ella/features/auth/domain/entities/sign_up/sign_up_request_entity.dart';
 
-class SignUpRequestModel extends SignUpRequestEntity {
+class SignUpRequestModel {
   const SignUpRequestModel({
     this.firstName,
     this.lastName,
     this.email,
     this.password,
     this.language,
-  }) : super(
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          language: language,
-        );
+  });
 
   factory SignUpRequestModel.fromJson(dynamic json) {
     return SignUpRequestModel(
@@ -39,5 +33,17 @@ class SignUpRequestModel extends SignUpRequestEntity {
     map['password'] = password;
     map['language'] = language;
     return map;
+  }
+}
+
+extension SignUpRequestModelX on SignUpRequestModel {
+  SignUpRequestEntity toEntity() {
+    return SignUpRequestEntity(
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      language: language,
+    );
   }
 }

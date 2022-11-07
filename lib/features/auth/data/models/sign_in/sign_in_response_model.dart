@@ -4,16 +4,12 @@ import 'package:ella/features/auth/domain/entities/sign_in/sign_in_response_enti
 /// first_name : "Jasmine"
 /// last_name : "Cameron"
 
-class SignInResponseModel extends SignInResponseEntity {
+class SignInResponseModel {
   const SignInResponseModel({
     this.token,
     this.firstName,
     this.lastName,
-  }) : super(
-          token: token,
-          firstName: firstName,
-          lastName: lastName,
-        );
+  });
 
   factory SignInResponseModel.fromJson(dynamic json) {
     return SignInResponseModel(
@@ -33,5 +29,15 @@ class SignInResponseModel extends SignInResponseEntity {
     map['first_name'] = firstName;
     map['last_name'] = lastName;
     return map;
+  }
+}
+
+extension SignInResponseModelExtension on SignInResponseModel {
+  SignInResponseEntity toEntity() {
+    return SignInResponseEntity(
+      token: token,
+      firstName: firstName,
+      lastName: lastName,
+    );
   }
 }

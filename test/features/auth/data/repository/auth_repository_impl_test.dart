@@ -51,7 +51,8 @@ void main() {
       firstName: 'firstName',
       lastName: 'lastName',
     );
-    const SignInResponseEntity signInResponseEntity = signInResponseModel;
+    final SignInResponseEntity signInResponseEntity =
+        signInResponseModel.toEntity();
 
     setUp(() {
       when(networkInfo.isConnected).thenAnswer((realInvocation) async => true);
@@ -60,18 +61,20 @@ void main() {
     test('should return right sign in entity', () async {
       when(authRemoteDataSource.signIn(signInRequestModel))
           .thenAnswer((realInvocation) async => signInResponseModel);
-      final result = await authRepositoryImpl.signIn(signInRequestModel);
+      final result =
+          await authRepositoryImpl.signIn(signInRequestModel.toEntity());
       verify(authRemoteDataSource.signIn(signInRequestModel));
       expect(
         result,
-        const Right(signInResponseEntity),
+        Right(signInResponseEntity),
       );
     });
 
     test('should return left failure', () async {
       when(authRemoteDataSource.signIn(signInRequestModel))
           .thenThrow(ServerException(message: 'Something went wrong'));
-      final result = await authRepositoryImpl.signIn(signInRequestModel);
+      final result =
+          await authRepositoryImpl.signIn(signInRequestModel.toEntity());
       verify(authRemoteDataSource.signIn(signInRequestModel));
       verifyNoMoreInteractions(authRemoteDataSource);
       expect(
@@ -95,7 +98,8 @@ void main() {
     test('should return no internet failure', () async {
       when(authRemoteDataSource.signIn(signInRequestModel))
           .thenThrow(NoInternetException());
-      final result = await authRepositoryImpl.signIn(signInRequestModel);
+      final result =
+          await authRepositoryImpl.signIn(signInRequestModel.toEntity());
       verifyNever(authRemoteDataSource.signIn(signInRequestModel));
       verifyNoMoreInteractions(authRemoteDataSource);
       expect(result, equals(Left(NoInternetFailure())));

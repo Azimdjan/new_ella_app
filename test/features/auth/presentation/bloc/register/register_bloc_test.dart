@@ -275,7 +275,7 @@ void main() {
         jsonDecode(
           fixture('sign_up_response_fixture'),
         ),
-      );
+      ).toEntity();
     });
 
     blocTest<RegisterBloc, RegisterState>(

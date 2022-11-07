@@ -3,14 +3,11 @@ import 'package:ella/features/auth/domain/entities/sign_in/sign_in_request_entit
 /// email : "jasmine@gmail.com"
 /// password : "jasmine"
 
-class SignInRequestModel extends SignInRequestEntity {
+class SignInRequestModel {
   const SignInRequestModel({
     this.email,
     this.password,
-  }) : super(
-          email: email,
-          password: password,
-        );
+  });
 
   factory SignInRequestModel.fromJson(dynamic json) {
     return SignInRequestModel(
@@ -28,4 +25,11 @@ class SignInRequestModel extends SignInRequestEntity {
     map['password'] = password;
     return map;
   }
+}
+
+extension SignInRequestModelX on SignInRequestModel {
+  SignInRequestEntity toEntity() => SignInRequestEntity(
+        email: email,
+        password: password,
+      );
 }
